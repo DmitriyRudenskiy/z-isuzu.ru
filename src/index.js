@@ -1,6 +1,7 @@
 require('babel-register')
 
 const app = require('./app')
+const db = require('./models/db');
 // const config = require('dotenv').config();
 const port = parseInt(process.env.PORT, 10) || 8081
 

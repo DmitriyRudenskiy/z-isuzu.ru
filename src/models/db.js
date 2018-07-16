@@ -9,8 +9,8 @@ const sequelize = new Sequelize(
         dialect: process.env.DB_CONNECTION,
         operatorsAliases: false,
         insecureAuth: true,
-        //logging: false,
-        freezeTableName: true,
+        logging: false,
+        freezeTableName: true
     }
 )
 

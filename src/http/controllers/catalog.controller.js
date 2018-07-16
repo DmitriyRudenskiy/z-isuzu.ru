@@ -1,4 +1,4 @@
-import carModel from '../models/model.model';
+import carModel from '../../models/model.model';
 
 const CatalogController = {};
 module.exports = CatalogController;

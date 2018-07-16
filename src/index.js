@@ -1,19 +1,26 @@
 require('babel-register')
 
 const app = require('./app')
-const db = require('./models/db');
-// const config = require('dotenv').config();
+const db = require('./models/db')
+const config = require('dotenv').config()
 const port = parseInt(process.env.PORT, 10) || 8081
 
-const server = app
-  .listen(port, function () {
-    const host = server.address().address
-    const port = server.address().port
+db.sequelize
+    .authenticate()
+    .then(() => {
+        console.log('MYSQL: Connection has been established successfully.')
 
-    console.log('App listening at http://%s:%s', host, port)
-  })
-  .on('error', err => {
-    console.error(err)
-  })
+        const server = app
+            .listen(port, function() {
+                const host = server.address().address
+                const port = server.address().port
 
-module.exports = server
+                console.log('App listening at http://%s:%s', host, port)
+            })
+            .on('error', err => {
+                console.error(err)
+            })
+    })
+    .catch(err => {
+        console.error('MYSQL:  Unable to connect to the database:', err)
+    })

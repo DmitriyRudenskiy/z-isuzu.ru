@@ -1,11 +1,19 @@
-const Sequelize = require('sequelize')
+import dotenv from 'dotenv'
+import Sequelize from 'sequelize'
 
-const sequelize = new Sequelize('new_isuzu_toptk_ru', 'root', '123', {
-    host: 'db',
-    dialect: 'mysql',
-    //logging: false,
-    freezeTableName: true,
-    operatorsAliases: false,
-})
+const config = dotenv.config()
+const sequelize = new Sequelize(
+    process.env.DB_DATABASE,
+    process.env.DB_USERNAME,
+    process.env.DB_PASSWORD,
+    {
+        host: process.env.DB_HOST,
+        dialect: process.env.DB_CONNECTION,
+        operatorsAliases: false,
+        insecureAuth: true,
+        //logging: false,
+        freezeTableName: true,
+    }
+)
 
 module.exports = { Sequelize, sequelize }

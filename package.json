@@ -32,7 +32,9 @@
     "koa-helmet": "^4.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa-swig": "^2.2.1"
+    "koa-swig": "^2.2.1",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

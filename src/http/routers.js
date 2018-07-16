@@ -1,3 +1,5 @@
+import CatalogController from './controllers/catalog.controller.js'
+
 import Router from 'koa-router'
 const router = Router()
 
@@ -7,6 +9,4 @@ router.get('/ping', async (ctx, next) => {
     ctx.body = 'pong'
 })
 
-router.get('/', async (ctx, next) => {
-    ctx.body = await ctx.render('home/index')
-})
+router.get('/', CatalogController.index)

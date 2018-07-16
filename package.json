@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pre-commit": "npm run lint && npm run pretty",
     "build": "babel esm --out-dir cjs",
     "lint": "./node_modules/.bin/eslint **/*.js --ignore-pattern node_modules/ --fix",
-    "pretty": "./node_modules/.bin/prettier --tab-width 4 --no-semi --single-quote --trailing-comma es5 --write '{app,__{tests,mocks}__}/**/*.js'",
+    "pretty": "./node_modules/.bin/prettier --tab-width 4 --no-semi --single-quote --trailing-comma es5 --write '{src,__{tests,mocks}__}/**/*.js'",
     "test": "NODE_ENV=testing ./node_modules/.bin/jest --forceExit  tests/ping.test.js"
   },
   "repository": {

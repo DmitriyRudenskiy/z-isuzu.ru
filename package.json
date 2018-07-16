@@ -7,7 +7,7 @@
     "build": "babel esm --out-dir cjs",
     "lint": "./node_modules/.bin/eslint **/*.js --ignore-pattern node_modules/ --fix",
     "pretty": "./node_modules/.bin/prettier --tab-width 4 --no-semi --single-quote --trailing-comma es5 --write '{app,__{tests,mocks}__}/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=testing ./node_modules/.bin/jest --forceExit  tests/ping.test.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "html-minifier": "^3.5.19",
     "koa": "^2.5.2",
     "koa-compress": "^3.0.0",
+    "koa-csrf": "^3.0.6",
     "koa-helmet": "^4.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
@@ -41,7 +42,12 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "prettier": "^1.13.7"
+    "jest": "^23.4.1",
+    "prettier": "^1.13.7",
+    "supertest": "^3.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "babel": {
     "presets": [

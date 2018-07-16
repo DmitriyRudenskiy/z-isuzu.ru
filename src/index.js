@@ -3,8 +3,8 @@ require('dotenv').config()
 
 const app = require('./app')
 const db = require('./models/db')
-const port = parseInt(process.env.PORT, 10) || 8081
-const host = process.env.PORT || '127.0.0.01'
+const PORT = parseInt(process.env.PORT, 10) || 8081
+const HOST = process.env.HOST || '127.0.0.1'
 
 db.sequelize
     .authenticate()
@@ -12,7 +12,7 @@ db.sequelize
         console.log('MYSQL: Connection has been established successfully.')
 
         const server = app
-            .listen(port, host, function() {
+            .listen(PORT, HOST, function() {
                 const host = server.address().address
                 const port = server.address().port
 

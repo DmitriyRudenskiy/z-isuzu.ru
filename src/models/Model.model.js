@@ -1,6 +1,6 @@
 import { Sequelize, sequelize } from './db'
 
-const Model = sequelize.define('images', {
+const carModel = sequelize.define('images', {
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -32,4 +32,4 @@ const Model = sequelize.define('images', {
     }
 )
 
-module.exports = Model
+module.exports = carModel

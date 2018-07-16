@@ -1,0 +1,32 @@
+{
+  "name": "z-isuzu.ru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitriyRudenskiy/z-isuzu.ru.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DmitriyRudenskiy/z-isuzu.ru/issues"
+  },
+  "homepage": "https://github.com/DmitriyRudenskiy/z-isuzu.ru#readme",
+  "dependencies": {
+    "co": "^4.6.0",
+    "dotenv": "^6.0.0",
+    "html-minifier": "^3.5.19",
+    "koa": "^2.5.2",
+    "koa-compress": "^3.0.0",
+    "koa-swig": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
+  }
+}

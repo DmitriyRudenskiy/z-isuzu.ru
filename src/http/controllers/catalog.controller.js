@@ -1,3 +1,5 @@
+console.log(__dirname);
+
 import Model from '../../models/model.model';
 
 const CatalogController = {};

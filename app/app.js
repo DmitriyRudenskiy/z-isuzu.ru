@@ -1,14 +1,14 @@
 import Koa from 'koa'
+import serve from "koa-static";
 import render from 'koa-swig'
 import co from 'co'
 import compress from 'koa-compress'
 import minifier from './http/middleware/minifier'
-const app = new Koa();
 
-app.use(compress());
-
-// minifier HTML
-app.use(minifier);
+const app = new Koa()
+    .use(serve(__dirname + "/../public"))
+    .use(compress())
+    .use(minifier);
 
 // render
 app.context.render = co.wrap(render({

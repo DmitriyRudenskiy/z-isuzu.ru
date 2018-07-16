@@ -1,25 +1,25 @@
-import {minify} from 'html-minifier'
+import { minify } from 'html-minifier'
 
 module.exports = async (ctx, next) => {
-    await next();
+    await next()
 
     if (!ctx.response.is('html')) {
-        return;
+        return
     }
 
-    let body = ctx.body;
+    let body = ctx.body
 
     if (!body || body.pipe) {
-        return;
+        return
     }
 
     if (Buffer.isBuffer(body)) {
-        body = body.toString();
+        body = body.toString()
     }
 
     ctx.body = minify(body, {
         caseSensitive: true,
         collapseWhitespace: true,
-        quoteCharacter: '"'
-    });
+        quoteCharacter: '"',
+    })
 }

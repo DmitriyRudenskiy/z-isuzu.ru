@@ -1,6 +1,8 @@
 import { Sequelize, sequelize } from './db'
 
-const Images = sequelize.define('images', {
+import Product from './product.model'
+
+const Image = sequelize.define('Image', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -30,6 +32,17 @@ const Images = sequelize.define('images', {
         allowNull: false,
         type: Sequelize.DATE,
     },
-})
+},
+    {
+        tableName: 'images'
+    })
 
-module.exports = Images
+module.exports = Image
+
+Image.hasMany(Product, {foreignKey: 'image_id', as: 'products'})
+    /*
+    scope: {
+        commentable: 'post'
+    }});
+    */
+

@@ -1,14 +1,10 @@
 import { Sequelize, sequelize } from './db'
 
-const Category = sequelize.define('images', {
+const Category = sequelize.define('Category', {
     id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-    },
-    modelId: {
-        field: 'model_id',
         type: Sequelize.INTEGER,
     },
     parent_number: {
@@ -17,7 +13,10 @@ const Category = sequelize.define('images', {
     number: {
         type: Sequelize.INTEGER,
     },
-    hash: {
+    title: {
+        type: Sequelize.STRING,
+    },
+    image: {
         type: Sequelize.STRING,
     },
     createdAt: {
@@ -30,6 +29,9 @@ const Category = sequelize.define('images', {
         allowNull: false,
         type: Sequelize.DATE,
     },
-})
+},
+    {
+        tableName: 'spare_parts'
+    })
 
 module.exports = Category

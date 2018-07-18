@@ -16,7 +16,19 @@ const app = new Koa()
     .use(router.routes())
     .use(router.allowedMethods())
 
+/*
+app.context.router = router;
+
+console.log();
+
+ ctx.res.end('OK');
+
+url = function (name, params) {
+
+
 // render
+var locals =  };
+*/
 app.context.render = co.wrap(
     render({
         root: path.join(__dirname, './/views'),
@@ -24,6 +36,7 @@ app.context.render = co.wrap(
         cache: false, // 'memory', // disable, set to false
         ext: 'twig',
         writeBody: false,
+        locals: { route: function (name, params) {return router.url(name, params)}}
     })
 )
 

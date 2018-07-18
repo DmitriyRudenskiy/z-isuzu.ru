@@ -17,3 +17,6 @@ router.use('/users', userAuth());
 router.use(['/users', '/admin'], userAuth());
 
 app.use(router.routes());
+
+npm install swig-templates
+var swig  = require('swig-templates');

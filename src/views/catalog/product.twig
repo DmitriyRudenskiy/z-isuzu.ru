@@ -1,0 +1,35 @@
+{% extends '../layouts/app.twig' %}
+
+{% block title %}{{ spare_part.title }} FOR ISUZU {{ model.title }} {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm">
+            <h1>ISUZU {{ model.title }}</h1>
+        </div>
+    </div>
+
+    {% for item in images %}
+        <div class="row">
+            <div class="col-sm-7">
+                <img src="http://isuzu.toptk.ru/images/schemes/{{ item.hash }}.png" alt="..." class="img-thumbnail">
+            </div>
+            <div class="col-sm-5">
+                {% if item.products.length > 0 %}
+                    <table class="table table-hover">
+                        <tbody>
+                        {% for value in item.products %}
+                        <tr>
+                            <td>{{ value.number }} </td>
+                            <td>{{ value.name }}</td>
+                            <td><button type="button" class="btn btn-danger btn-block align-middle"><i class="fas fa-shopping-cart"></i></button></td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+            </div>
+            <div class="col-sm-12"><hr></div>
+        </div>
+    {% endfor %}
+{% endblock %}

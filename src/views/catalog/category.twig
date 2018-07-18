@@ -1,0 +1,21 @@
+{% extends '../layouts/app.twig' %}
+
+{% block title %}Зачасти на {{ spare_part.title }} для ISUZU {{ model.title }} {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm">
+            <h1>ISUZU {{ model.title }}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for item in list %}
+            <div class="col-sm-6 __catalog_item">
+                <img src="http://isuzu.toptk.ru/images/category/{{ item.image }}.png" class="float-left" alt="{{ item.title }}">
+                <h3>{{ item.title }}</h3>
+                <a href="{{ route("front_product_view", {"id": model.id, "sparePartId": item.id}) }}" class="btn btn-danger">Смотреть все</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

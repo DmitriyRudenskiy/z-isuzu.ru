@@ -7,29 +7,27 @@ const Product = sequelize.define('images', {
         primaryKey: true,
         type: Sequelize.INTEGER,
     },
-    modelId: {
-        field: 'model_id',
-        type: Sequelize.INTEGER,
-    },
-    parent_number: {
+    imageId: {
+        field: 'image_id',
         type: Sequelize.INTEGER,
     },
     number: {
-        type: Sequelize.INTEGER,
-    },
-    hash: {
+        field: 'col_7',
         type: Sequelize.STRING,
     },
-    createdAt: {
-        field: 'created_at',
-        allowNull: false,
-        type: Sequelize.DATE,
-    },
-    updatedAt: {
-        field: 'updated_at',
-        allowNull: false,
-        type: Sequelize.DATE,
-    },
-})
+        name: {
+            field: 'col_1',
+            type: Sequelize.STRING,
+        },
+        code: {
+            field: 'col_6',
+            type: Sequelize.STRING,
+        },
+},
+    {
+        underscored: true,
+        timestamps: false,
+        tableName: 'products'
+    })
 
 module.exports = Product

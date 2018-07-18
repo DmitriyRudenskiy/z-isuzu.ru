@@ -25,7 +25,6 @@ console.log();
 
 url = function (name, params) {
 
-
 // render
 var locals =  };
 */
@@ -36,7 +35,11 @@ app.context.render = co.wrap(
         cache: false, // 'memory', // disable, set to false
         ext: 'twig',
         writeBody: false,
-        locals: { route: function (name, params) {return router.url(name, params)}}
+        locals: {
+            route: function(name, params) {
+                return router.url(name, params)
+            },
+        },
     })
 )
 

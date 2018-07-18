@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
         operatorsAliases: false,
         insecureAuth: true,
         logging: false,
-        freezeTableName: true
+        freezeTableName: true,
     }
 )
 

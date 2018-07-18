@@ -5,7 +5,14 @@ const router = Router()
 
 module.exports = router
 
-router.get('/ping', async (ctx, next) => {
+
+
+router.get('/.well-known/acme-challenge/:key', async (ctx, next) => {
+    ctx.type = 'text/html';
+    ctx.body = '-pQfRJ7qgbcUbz7bxuUYclE8fQzne0vJ-hTOUzGRsBQ.qK4ArxdwvBGKj9YFnSfag1bnCEdFLJg6EosqHxAr2Kg'
+})
+
+router.get('/.ping', async (ctx, next) => {
     ctx.body = 'pong'
 })
 

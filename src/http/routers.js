@@ -1,9 +1,28 @@
+import geoip from './middleware/geoip'
 import CatalogController from './controllers/catalog.controller.js'
-
 import Router from 'koa-router'
+
 const router = Router()
 
 module.exports = router
+
+router.all('*', async (ctx, next) => {
+
+    let cityId = ctx.cookies.get('city_id') * 1;
+
+    if (cityId) {
+        const result = geoip(ctx.ip)
+
+        if (result !== null) {
+            cityId = result.city.geoname_id || 0
+            ctx.cookies.set('city_id', cityId);
+        }
+    }
+
+    ctx.state.cityId = cityId;
+
+    await next();
+})
 
 router.get('/.well-known/acme-challenge/:key', async (ctx, next) => {
     ctx.type = 'text/html'

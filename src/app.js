@@ -12,22 +12,15 @@ const app = new Koa()
     .use(serve(path.join(__dirname, '/../public')))
     .use(helmet())
     .use(compress())
-    .use(minifier)
+    //.use(minifier)
     .use(router.routes())
     .use(router.allowedMethods())
 
-/*
-app.context.router = router;
+app.use((ctx, next) => {
+    ctx.compress = true
+    ctx.body = fs.createReadStream(file)
+})
 
-console.log();
-
- ctx.res.end('OK');
-
-url = function (name, params) {
-
-// render
-var locals =  };
-*/
 app.context.render = co.wrap(
     render({
         root: path.join(__dirname, './/views'),
@@ -38,7 +31,7 @@ app.context.render = co.wrap(
         locals: {
             route: function(name, params) {
                 return router.url(name, params)
-            },
+            }
         },
     })
 )

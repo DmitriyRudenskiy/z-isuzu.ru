@@ -26,6 +26,7 @@
     "babel-cli": "^6.26.0",
     "co": "^4.6.0",
     "dotenv": "^6.0.0",
+    "geoip2": "^1.0.5",
     "html-minifier": "^3.5.19",
     "koa": "^2.5.2",
     "koa-compress": "^3.0.0",

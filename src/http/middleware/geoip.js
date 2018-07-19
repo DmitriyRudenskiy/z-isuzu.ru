@@ -1,5 +1,2 @@
-import geoip2 from 'geoip2'
-
-geoip2.init();
-
-module.exports = geoip2.lookupSync
+const geoip = require('geo-from-ip')
+module.exports = geoip.allData

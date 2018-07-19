@@ -16,14 +16,9 @@ const app = new Koa()
     .use(router.routes())
     .use(router.allowedMethods())
 
-app.use((ctx, next) => {
-    ctx.compress = true
-    ctx.body = fs.createReadStream(file)
-})
-
 app.context.render = co.wrap(
     render({
-        root: path.join(__dirname, './/views'),
+        root: path.join(__dirname, './views'),
         autoescape: true,
         cache: false, // 'memory', // disable, set to false
         ext: 'twig',

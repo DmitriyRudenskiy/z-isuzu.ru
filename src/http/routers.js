@@ -7,15 +7,14 @@ const router = Router()
 module.exports = router
 
 router.all('*', async (ctx, next) => {
-
-    let cityId = ctx.cookies.get('city_id') * 1;
+    let cityId = ctx.cookies.get('city')
 
     if (cityId) {
         const result = geoip(ctx.ip)
 
         if (result !== null) {
-            cityId = result.city.geoname_id || 0
-            ctx.cookies.set('city_id', cityId);
+            cityId = result.city
+            ctx.cookies.set('city', cityId);
         }
     }
 

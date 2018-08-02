@@ -12,7 +12,7 @@
     <div class="row">
         {% for item in list %}
             <div class="col-sm-6 __catalog_item">
-                <img src="http://isuzu.toptk.ru/images/category/{{ item.image }}.png" class="float-left" alt="{{ item.title }}">
+                <img data-src="http://isuzu.toptk.ru/images/category/{{ item.image }}.png" class="lazy float-left" alt="{{ item.title }}">
                 <h3>{{ item.title }}</h3>
                 <a href="{{ route("front_product_view", {"id": model.id, "sparePartId": item.id}) }}" class="btn btn-danger">Смотреть все</a>
             </div>

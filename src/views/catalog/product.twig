@@ -13,7 +13,7 @@
         {% for item in images %}
             <div class="row">
                 <div class="col-sm-7">
-                    <img src="http://isuzu.toptk.ru/images/schemes/{{ item.hash }}.png" alt="..." class="img-thumbnail">
+                    <img data-src="http://isuzu.toptk.ru/images/schemes/{{ item.hash }}.png" alt="..." class="img-thumbnail lazy">
                 </div>
                 <div class="col-sm-5">
                     {% if item.products.length > 0 %}

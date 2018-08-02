@@ -21,8 +21,9 @@
                         {% for value in item.products %}
                         <tr>
                             <td>{{ value.number }} </td>
+                            <td>{{ value.code }}</td>
                             <td>{{ value.name }}</td>
-                            <td><button type="button" class="btn btn-danger btn-block align-middle"><i class="fas fa-shopping-cart"></i></button></td>
+                            <td><button type="button" class="btn btn-danger btn-block align-middle" data-toggle="modal" data-target="#send_request"><i class="fas fa-shopping-cart"></i></button></td>
                         </tr>
                         </tbody>
                         {% endfor %}
@@ -32,4 +33,32 @@
             <div class="col-sm-12"><hr></div>
         </div>
     {% endfor %}
+
+    <div class="modal" tabindex="-1" role="dialog" id="send_request">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title">ОТПРАВЬТЕ ЗАПРОС И ПОЛУЧИТЕ ОТВЕТ В ТЕЧЕНИИ 15 МИНУТ, СЭКОНОМИВ ДО 30%</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <form>
+                        <div class="formrow">
+                            <input type="text" class="form-control" name="name" placeholder="Ваше Имя" required>
+                        </div>
+                        <div class="formrow">
+                            <input type="text" class="form-control" name="phone" placeholder="Ваш телефон" required>
+                        </div>
+                        <div class="formrow">
+                            <input type="text" class="form-control" name="vin" placeholder="VIN_ номер">
+                        </div>
+                        <div class="formrow">
+                            <textarea class="form-control" name="comment" placeholder="Какие запчасти Вам нужны? Так-же можете указать марку, модель и год выпуска автомобиля."></textarea>
+                        </div>
+                        <input type="submit" name="" class="btn" value="ОТПРАВИТЬ ЗАПРОС">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

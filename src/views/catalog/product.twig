@@ -9,56 +9,65 @@
         </div>
     </div>
 
-    {% for item in images %}
-        <div class="row">
-            <div class="col-sm-7">
-                <img src="http://isuzu.toptk.ru/images/schemes/{{ item.hash }}.png" alt="..." class="img-thumbnail">
-            </div>
-            <div class="col-sm-5">
-                {% if item.products.length > 0 %}
-                    <table class="table table-hover">
-                        <tbody>
-                        {% for value in item.products %}
-                        <tr>
-                            <td>{{ value.number }} </td>
-                            <td>{{ value.code }}</td>
-                            <td>{{ value.name }}</td>
-                            <td><button type="button" class="btn btn-danger btn-block align-middle" data-toggle="modal" data-target="#send_request"><i class="fas fa-shopping-cart"></i></button></td>
-                        </tr>
-                        </tbody>
-                        {% endfor %}
-                    </table>
-                {% endif %}
-            </div>
-            <div class="col-sm-12"><hr></div>
-        </div>
-    {% endfor %}
+    {% if images.length > 0 %}
+        {% for item in images %}
+            <div class="row">
+                <div class="col-sm-7">
+                    <img src="http://isuzu.toptk.ru/images/schemes/{{ item.hash }}.png" alt="..." class="img-thumbnail">
+                </div>
+                <div class="col-sm-5">
+                    {% if item.products.length > 0 %}
+                        <table class="table table-hover">
+                            <tbody>
+                            {% for value in item.products %}
+                            <tr>
+                                {% if value.name != "" %}
+                                    <td>{{ value.number }} </td>
+                                    <td>{{ value.code }}<br>{{ value.name }}</td>
+                                    <td><button type="button" class="btn btn-danger btn-block align-middle" data-toggle="modal" data-target="#send_request" data-code="ISUZU {{ model.title }} {{ value.code }} {{ value.name }}"><i class="fas fa-shopping-cart"></i></button></td>
+                                {% endif %}
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                    {% else %}
 
-    <div class="modal" tabindex="-1" role="dialog" id="send_request">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h5 class="modal-title">ОТПРАВЬТЕ ЗАПРОС И ПОЛУЧИТЕ ОТВЕТ В ТЕЧЕНИИ 15 МИНУТ, СЭКОНОМИВ ДО 30%</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <form>
-                        <div class="formrow">
-                            <input type="text" class="form-control" name="name" placeholder="Ваше Имя" required>
-                        </div>
-                        <div class="formrow">
-                            <input type="text" class="form-control" name="phone" placeholder="Ваш телефон" required>
-                        </div>
-                        <div class="formrow">
-                            <input type="text" class="form-control" name="vin" placeholder="VIN_ номер">
-                        </div>
-                        <div class="formrow">
-                            <textarea class="form-control" name="comment" placeholder="Какие запчасти Вам нужны? Так-же можете указать марку, модель и год выпуска автомобиля."></textarea>
-                        </div>
-                        <input type="submit" name="" class="btn" value="ОТПРАВИТЬ ЗАПРОС">
-                    </form>
+                        {% include '_form.twig' %}
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-12"><hr></div>
+            </div>
+        {% endfor %}
+
+        <div class="modal bd-example-modal-sm" tabindex="-1" role="dialog" id="send_request">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {% include '_form.twig' %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                {% include '_form.twig' %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#send_request').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var code = button.data('code').trim()
+        var modal = $(this)
+        modal.find('[name=comment]').val(code);
+    })
+</script>
 {% endblock %}

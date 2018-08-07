@@ -52,5 +52,5 @@ MailController.send = async (ctx, next) => {
     );
 
 
-    // ctx.redirect(ctx.router.url('home', { query: { success: 1 } }))
+    ctx.redirect(ctx.router.url('home', { query: { success: 1 } }))
 }

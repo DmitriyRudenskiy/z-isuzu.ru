@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     <img src="/img/isuzu.svg" alt="" style="width: 100%; padding-top: 12px">
                 </a>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-7" style="padding-top: 12px">
                 <h1>Официальный каталог ISUZU</h1>
             </div>
             <!--
@@ -28,7 +29,6 @@
         </div>
     </div>
 </header>
-
 <div class="container">
     {% block body %}{% endblock %}
 </div>

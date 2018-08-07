@@ -1,5 +1,6 @@
 import geoip from './middleware/geoip'
-import CatalogController from './controllers/catalog.controller.js'
+import CatalogController from './controllers/catalog.controller'
+import MailController from './controllers/mail.controller'
 import Router from 'koa-router'
 
 const router = Router()
@@ -14,13 +15,13 @@ router.all('*', async (ctx, next) => {
 
         if (result !== null) {
             cityId = result.city
-            ctx.cookies.set('city', cityId);
+            ctx.cookies.set('city', cityId)
         }
     }
 
-    ctx.state.cityId = cityId;
+    ctx.state.cityId = cityId
 
-    await next();
+    await next()
 })
 
 router.get('/.well-known/acme-challenge/:key', async (ctx, next) => {
@@ -32,6 +33,9 @@ router.get('/.well-known/acme-challenge/:key', async (ctx, next) => {
 router.get('test_ping', '/.ping', async (ctx, next) => {
     ctx.body = 'pong'
 })
+
+router.get('/mail', MailController.test)
+router.post('callback_send', '/callback/send', MailController.send)
 
 router.get('home', '/', CatalogController.index)
 router.get(

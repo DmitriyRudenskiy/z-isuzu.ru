@@ -1,5 +1,6 @@
 import path from 'path'
 import Koa from 'koa'
+import koaBody from 'koa-body'
 import helmet from 'koa-helmet'
 import serve from 'koa-static'
 import render from 'koa-swig'
@@ -11,10 +12,13 @@ import minifier from './http/middleware/minifier'
 const app = new Koa()
     .use(serve(path.join(__dirname, '/../public')))
     .use(helmet())
+    .use(koaBody())
     .use(compress())
-    //.use(minifier)
+    .use(minifier)
     .use(router.routes())
     .use(router.allowedMethods())
+
+app.context.router = router
 
 app.context.render = co.wrap(
     render({
@@ -26,7 +30,7 @@ app.context.render = co.wrap(
         locals: {
             route: function(name, params) {
                 return router.url(name, params)
-            }
+            },
         },
     })
 )

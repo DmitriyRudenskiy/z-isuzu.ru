@@ -3,6 +3,15 @@
 {% block title %}Запчасти для атомобилей Исузу от производителя. Продажа оригинальных автозапчастей Isuzu{% endblock %}
 
 {% block body %}
+    {% if success == 1 %}
+        <div class="row">
+            <div class="col-md">
+                <div class="notice notice-success notice-lg">
+                    <strong><i class="far fa-envelope"></i></strong> Ваше сообщение отправлено!
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <!--
     <div class="alert alert-danger">
         <h4 class="alert-heading">Well done! </h4>

@@ -12,8 +12,11 @@ MailController.test = async (ctx, next) => {
 }
 
 MailController.send = async (ctx, next) => {
-    let { name, phone, vin, comment } = ctx.request.body
-    const now = new Date();
+    let name = ctx.request.body.name || 'нет'
+    let phone = ctx.request.body.phone || 0
+    let vin = ctx.request.body.vin || 'нет'
+    let comment = ctx.request.body.comment || 'нет'
+    const now = new Date()
 
     name = name
         .toString()
@@ -42,15 +45,14 @@ MailController.send = async (ctx, next) => {
     fs.appendFile(
         path.join(__dirname, '/../../../public') + '/log_phones.txt',
         [
-            [now.getDate(), now.getMonth()  + 1, now.getFullYear()].join('.'),
+            [now.getDate(), now.getMonth() + 1, now.getFullYear()].join('.'),
             phone,
             name,
             vin,
-            comment
-        ].join(' | ') + "\n",
-        (error) => { }
-    );
-
+            comment,
+        ].join(' | ') + '\n',
+        error => {}
+    )
 
     ctx.redirect(ctx.router.url('home', { query: { success: 1 } }))
 }

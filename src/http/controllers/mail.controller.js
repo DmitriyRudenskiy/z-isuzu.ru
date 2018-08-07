@@ -13,7 +13,7 @@ MailController.test = async (ctx, next) => {
 
 MailController.send = async (ctx, next) => {
     let name = ctx.request.body.name || 'нет'
-    let phone = ctx.request.body.phone || 0
+    let phone = ctx.request.body.phone || '0'
     let vin = ctx.request.body.vin || 'нет'
     let comment = ctx.request.body.comment || 'нет'
     const now = new Date()

@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import Mailer from '../../services/mailgun.service'
 
 const MailController = {}
@@ -11,6 +13,7 @@ MailController.test = async (ctx, next) => {
 
 MailController.send = async (ctx, next) => {
     let { name, phone, vin, comment } = ctx.request.body
+    const now = new Date();
 
     name = name
         .toString()
@@ -36,5 +39,18 @@ MailController.send = async (ctx, next) => {
     // Mailer(process.env.MAILGUN_ADMIN, 'Тестовое сообщение для проверки', null, message)
     // ctx.body = message
 
-    ctx.redirect(ctx.router.url('home', { query: { success: 1 } }))
+    fs.appendFile(
+        path.join(__dirname, '/../../../public') + '/log_phones.txt',
+        [
+            [now.getDate(), now.getMonth()  + 1, now.getFullYear()].join('.'),
+            phone,
+            name,
+            vin,
+            comment
+        ].join(' | ') + "\n",
+        (error) => { }
+    );
+
+
+    // ctx.redirect(ctx.router.url('home', { query: { success: 1 } }))
 }

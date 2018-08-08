@@ -39,7 +39,7 @@ MailController.send = async (ctx, next) => {
         comment,
     })
 
-    // Mailer(process.env.MAILGUN_ADMIN, 'Тестовое сообщение для проверки', null, message)
+    Mailer(process.env.MAILGUN_ADMIN, 'Тестовое сообщение для проверки', null, message)
     // ctx.body = message
 
     fs.appendFile(

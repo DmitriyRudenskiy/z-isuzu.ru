@@ -1,6 +1,6 @@
 # z-isuzu.ru
 
- HOST=0.0.0.0 PORT=5070 node /php/z-isuzu.ru/src/index.js
+ HOST=0.0.0.0 PORT=5071 node src/index.js
 
 pm2 start /php/z-isuzu.ru/src/index.js -N "z-isuzu.ru"
 

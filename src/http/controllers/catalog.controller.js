@@ -8,7 +8,7 @@ module.exports = CatalogController
 
 CatalogController.index = async (ctx, next) => {
     const success = ctx.query.success || null
-    const models = await carModel.findAll()
+    const models = await carModel.findAll({order: [['position', 'ASC']]})
     ctx.body = await ctx.render('catalog/index', { models, success })
 }
 

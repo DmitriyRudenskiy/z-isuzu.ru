@@ -22,11 +22,11 @@ MailController.send = async (ctx, next) => {
     const now = new Date()
 
     if (email) {
-        email = email.tirm().toLowerCase()
+        email = email.trim().toLowerCase()
     }
 
     if (subject) {
-        subject = subject.tirm()
+        subject = subject.trim()
     }
 
     name = name

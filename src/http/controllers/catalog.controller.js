@@ -8,7 +8,7 @@ module.exports = CatalogController
 
 CatalogController.index = async (ctx, next) => {
     const success = ctx.query.success || null
-    const models = await carModel.findAll({order: [['position', 'ASC']]})
+    const models = await carModel.findAll({ order: [['position', 'ASC']] })
     ctx.body = await ctx.render('catalog/index', { models, success })
 }
 
@@ -56,10 +56,10 @@ CatalogController.product = async (ctx, next) => {
 }
 
 function once(target, fn) {
-    var wrap = function () {
-        fn();
-        target.removeEventListener('click', wrap);
-    };
+    var wrap = function() {
+        fn()
+        target.removeEventListener('click', wrap)
+    }
 
-    target.addEventListener('click', wrap);
+    target.addEventListener('click', wrap)
 }

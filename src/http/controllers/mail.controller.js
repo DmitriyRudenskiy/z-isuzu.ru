@@ -13,13 +13,21 @@ MailController.test = async (ctx, next) => {
 
 MailController.send = async (ctx, next) => {
     let sourceId = (ctx.request.body.source_id || -1) * 1
-    let email = (ctx.request.body.email || '').toString().tirm().toLowerCase()
-    let subject = (ctx.request.body.subject || '').toString().tirm()
+    let email = ctx.request.body.email || 'нет'
+    let subject = ctx.request.body.subject || 'нет'
     let name = ctx.request.body.name || 'нет'
     let phone = ctx.request.body.phone || '0'
     let vin = ctx.request.body.vin || 'нет'
     let comment = ctx.request.body.comment || 'нет'
     const now = new Date()
+
+    if (email) {
+        email = email.tirm().toLowerCase()
+    }
+
+    if (subject) {
+        subject = subject.tirm()
+    }
 
     name = name
         .toString()
@@ -42,10 +50,14 @@ MailController.send = async (ctx, next) => {
         comment,
         sourceId,
         email,
-
     })
 
-    Mailer(process.env.MAILGUN_ADMIN, 'Тестовое сообщение для проверки', null, message)
+    Mailer(
+        process.env.MAILGUN_ADMIN,
+        'Тестовое сообщение для проверки',
+        null,
+        message
+    )
     // ctx.body = message
 
     fs.appendFile(

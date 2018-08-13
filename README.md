@@ -3,6 +3,7 @@
  HOST=0.0.0.0 PORT=5071 node src/index.js
 
 pm2 start /php/z-isuzu.ru/src/index.js -N "z-isuzu.ru"
+pm2 restart 0 --update-env
 
 
 // session middleware will run before authorize

@@ -13,8 +13,8 @@ MailController.test = async (ctx, next) => {
 
 MailController.send = async (ctx, next) => {
     let sourceId = (ctx.request.body.source_id || -1) * 1
-    let email = (ctx.request.body.email || '').tirm().toLowerCase()
-    let subject = (ctx.request.body.subject || '').tirm()
+    let email = (ctx.request.body.email || '').toString().tirm().toLowerCase()
+    let subject = (ctx.request.body.subject || '').toString().tirm()
     let name = ctx.request.body.name || 'нет'
     let phone = ctx.request.body.phone || '0'
     let vin = ctx.request.body.vin || 'нет'

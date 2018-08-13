@@ -13,7 +13,7 @@
         {% for item in list %}
             <div class="col-sm-6 __catalog_item">
                 <img data-src="http://isuzu.toptk.ru/images/category/{{ item.image }}.png" class="lazy float-left" alt="{{ item.title }}">
-                <h3>{{ item.title }}</h3>
+                <h3>{{ item.title }} </h3>
                 <a href="{{ route("front_category_view", {"id": model.id, "sparePartId": item.number}) }}" class="btn btn-danger">Смотреть все</a>
             </div>
         {% endfor %}

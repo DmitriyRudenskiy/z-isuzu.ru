@@ -54,3 +54,12 @@ CatalogController.product = async (ctx, next) => {
         images,
     })
 }
+
+function once(target, fn) {
+    var wrap = function () {
+        fn();
+        target.removeEventListener('click', wrap);
+    };
+
+    target.addEventListener('click', wrap);
+}

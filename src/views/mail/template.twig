@@ -6,15 +6,43 @@
 <body style="font-family: Arial, Helvetica, sans-serif; color: #333333">
 <center>
 <table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0; max-width: 600px; width: 100%" >
+
+    <tr>
+        <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">Источник:</td>
+        <td style="margin-bottom: 12px;padding: 5px 0; border-bottom: 1px solid #cccccc;">
+            {% if sourceId == 3 %}
+                Только телефон
+            {% elseif if sourceId == 2 %}
+                Форма контакты на лендинге
+            {% elseif if sourceId == 1 %}
+                Верхняя форма на лендинге
+            {% else %}
+                Сайт с деталями
+            {% endif %}
+        </td>
+    </tr>
+    {% if sourceId != 3 %}
     <tr>
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">Имя:</td>
         <td style="margin-bottom: 12px;padding: 5px 0; border-bottom: 1px solid #cccccc;">{{ name }}</td>
     </tr>
+    {% endif %}
+    {% if sourceId == 2 %}
+        <tr>
+            <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">Тема письма:</td>
+            <td style="margin-bottom: 12px;padding: 5px 0; border-bottom: 1px solid #cccccc;">{{ subject }}</td>
+        </tr>
+        <tr>
+            <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">Email:</td>
+            <td style="margin-bottom: 12px;padding: 5px 0; border-bottom: 1px solid #cccccc;">{{ email }}</td>
+        </tr>
+    {% endif %}
     <tr>
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">Телефон:</td>
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">{{ phone }}</td>
     </tr>
     <tr>
+    {% if sourceId != 3 %}
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">VIN:</td>
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">{{ vin }}</td>
     </tr>
@@ -22,6 +50,7 @@
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">Комментарий:</td>
         <td style="margin-bottom: 12px; padding: 5px 0; border-bottom: 1px solid #cccccc;">{% if comment.length < 1 %}<p style="color: red;">нет</p>{% else %}{{ comment }}{% endif %}</td>
     </tr>
+    {% endif %}
 </table>
 </center>
 </body>

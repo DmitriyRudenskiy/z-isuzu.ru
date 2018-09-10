@@ -2,7 +2,7 @@
 
  HOST=0.0.0.0 PORT=5071 node src/index.js
 
-pm2 start /php/z-isuzu.ru/src/index.js -N "z-isuzu.ru"
+pm2 start /php/z-isuzu.ru/src/index.js -n "z-isuzu.ru"
 pm2 restart 0 --update-env
 
 
@@ -22,4 +22,5 @@ app.use(router.routes());
 # Run local server (once)
     HOST=0.0.0.0 PORT=5070 node src/index.js
 
-
+cd /php/z-isuzu.ru/
+pm2 start src/ -n "z-isuzu.ru"
